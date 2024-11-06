@@ -2,20 +2,17 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
-import { ProductComponent } from './component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
-    ProductComponent
+    AppComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule
   ],
-  providers: [
-    provideAnimationsAsync()
-  ],
-  bootstrap: [ProductComponent]
+  providers: [],
+  bootstrap: [AppComponent]
 })
 export class AppModule { }
