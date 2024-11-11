@@ -46,4 +46,11 @@ private generateID(): number {
     return candidate;
     }
 
+swapProduct() {
+        let p = this.products.shift();
+        if (p != null) {
+        this.products.push(new Product(p.id, p.name, p.category, p.price));
+        }
+        }
+
 }
