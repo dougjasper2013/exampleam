@@ -1,9 +1,31 @@
-<div class="bg-info p-2 text-white">
-    Product Names:
-    <ng-container *ngFor="let item of getProducts(); let last = last">
-    {{ item.name}}<ng-container *ngIf="!last">,</ng-container>
-    </ng-container>
+<div class="p-2">
+    <div class="bg-info text-white mb-2 p-2">Model Data: {{jsonProduct}}</div>
+        <form (ngSubmit)="addProduct(newProduct)">
+            <div class="form-group">
+                <label>Name</label>
+                <input class="form-control"
+                    name="name"
+                    [(ngModel)]="newProduct.name"
+                    #name="ngModel"
+                    required
+                    minlength="5"
+                    pattern="^[A-Za-z ]+$" />
+                <ul class="text-danger list-unstyled mt-1"
+                    *ngIf="name.dirty && name.invalid">
+                    <li *ngIf="name.errors?.['required']">
+                        You must enter a product name
+                    </li>
+                    <li *ngIf="name.errors?.['pattern']">
+                        Product names can only contain letters and spaces
+                    </li>
+                    <li *ngIf="name.errors?.['minlength']">
+                        Product names must be at least
+                            {{ name.errors?.['minlength'].requiredLength }} characters
+                    </li>
+                </ul>
+            </div>
+    <button class="btn btn-primary mt-2" type="submit">
+        Create
+ </button>
+ </form>
 </div>
-<div class="bg-info p-2">
-    The rounded price is {{getProductPrice(2)}}
-   </div>
